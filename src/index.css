@@ -1,0 +1,110 @@
+@import '@fontsource/noto-sans-thai/400.css';
+@import '@fontsource/noto-sans-thai/700.css';
+@import '@fontsource/chakra-petch/600.css';
+@import '@fontsource/chakra-petch/700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  max-width: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: #0c1412;
+  color: #e7e1d2;
+  font-family: 'Noto Sans Thai', 'Chakra Petch', sans-serif;
+  touch-action: manipulation;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  touch-action: manipulation;
+}
+
+.os-window {
+  background: #d5dbe3;
+  color: #17202a;
+  border: 2px solid #f4f7fb;
+  border-right-color: #5c6775;
+  border-bottom-color: #5c6775;
+  box-shadow: 4px 4px 0 #05080c;
+}
+
+.os-title {
+  background: linear-gradient(90deg, #123c4a, #1f7a6a);
+  color: #f3fff9;
+}
+
+.os-title.off {
+  background: #3e4c59;
+}
+
+.desktop-bg {
+  background-color: #1b3344;
+  background-image:
+    radial-gradient(circle at 78% 72%, rgba(92, 52, 24, 0.35), transparent 18%),
+    radial-gradient(ellipse at 18% 0%, rgba(255, 255, 255, 0.08), transparent 42%),
+    repeating-linear-gradient(90deg, transparent 0 86px, rgba(0, 0, 0, 0.16) 86px 90px),
+    linear-gradient(180deg, #2a5168 0%, #1b3344 42%, #122430 100%);
+}
+
+.panic-desk {
+  animation: panic-vignette 1s ease-in-out infinite;
+}
+
+.scanlines {
+  background: repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.035) 1px, transparent 1px, transparent 3px);
+  pointer-events: none;
+}
+
+@keyframes panic-vignette {
+  0%,
+  100% {
+    box-shadow: inset 0 0 70px rgba(255, 30, 60, 0.28);
+  }
+  50% {
+    box-shadow: inset 0 0 130px rgba(255, 30, 60, 0.62);
+  }
+}
+
+@keyframes boss-shake {
+  0%,
+  100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+
+.animate-boss {
+  animation: boss-shake 0.35s linear 2;
+}
+
+.stamp {
+  border: 4px solid currentColor;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transform: rotate(-8deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panic-desk,
+  .animate-boss,
+  .animate-pulse {
+    animation: none !important;
+  }
+}
